@@ -397,7 +397,7 @@
         <div class="enunciado">Cite al menos 4 tipos de micrómetro y su uso.</div>
         <textarea id="r20" placeholder="..." rows="3"></textarea>
         <div class="button-row">
-            <button class="btn btn-validate" onclick="validar(20, 'micrómetro para medición externa, micrómetro para medición de espesor de tubos, micrómetro con discos, micrómetro para medición de profundidades, micrómetro con reloj, micrómetro externo con barras intercambiables, micrómetro interno')">✅ Validar</button>
+            <button class="btn btn-validate" onclick="validarP20()">✅ Validar</button>
             <button class="btn" onclick="mostrarAyuda(20)">🔍 Ver modelo</button>
         </div>
         <div id="fb20" class="feedback" style="display: none;"></div>
@@ -519,6 +519,39 @@
         } else {
             fb.className = 'feedback feedback-incorrect';
             fb.innerHTML = '❌ Casi! Recordá los 4 pasos...';
+        }
+    }
+    // Validador específico para la pregunta 20 - Versión justa
+    function validarP20() {
+        const resp = document.getElementById('r20').value.trim().toLowerCase();
+        const fb = document.getElementById('fb20');
+        
+        // Lista de expresiones exactas que queremos detectar (tal cual las escribiste)
+        const variantesValidas = [
+            'medición externa',
+            'medición de espesor de tubos',
+            'con discos',
+            'medición de profundidades',
+            'externo con barras intercambiables',
+            'con reloj',
+            'interno'
+        ];
+        
+        let encontradas = 0;
+        variantesValidas.forEach(expr => {
+            if (resp.includes(expr)) {
+                encontradas++;
+            }
+        });
+
+        fb.style.display = 'block';
+        
+        if (encontradas >= 4) {
+            fb.className = 'feedback';
+            fb.innerHTML = `✅ ¡Bien! Se detectaron ${encontradas} tipos válidos. Coincide con lo que esperábamos.`;
+        } else {
+            fb.className = 'feedback feedback-incorrect';
+            fb.innerHTML = `❌ Detectamos solo ${encontradas} tipos. Asegurate de incluir al menos 4 de estas variantes:\n\n• medición externa\n• medición de espesor de tubos\n• con discos\n• medición de profundidades\n• externo con barras intercambiables\n• con reloj\n• interno`;
         }
     }
 
