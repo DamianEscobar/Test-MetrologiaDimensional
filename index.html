@@ -409,7 +409,7 @@
         <div class="enunciado">Pasos para hacer la medición con micrómetro (resumen).</div>
         <textarea id="r21" placeholder="..." rows="3"></textarea>
         <div class="button-row">
-            <button class="btn btn-validate" onclick="validar(21, '1) posicione la pieza, 2) limpie las puntas de contacto, 3) compruebe la calibración del micrómetro, 4) realice la primera medición')">✅ Validar</button>
+            <button class="btn btn-validate" onclick="validarP21()">✅ Validar</button>
             <button class="btn" onclick="mostrarAyuda(21)">🔍 Ver modelo</button>
         </div>
         <div id="fb21" class="feedback" style="display: none;"></div>
@@ -491,6 +491,34 @@
         } else {
             fb.className = 'feedback feedback-incorrect';
             fb.innerHTML = `❌ Vimos sólo ${encontradas} partes. Recordá: arco, tornillo micrométrico, puntas de contacto, tornillo de fijación, cilindro exterior, tambor, tuerca, trinquete.`;
+        }
+    }
+    function validarP21() {
+        const respuesta = document.getElementById('r21').value.trim().toLowerCase();
+        const fb = document.getElementById('fb21');
+        
+        // Palabras clave que busca
+        const debeIncluir = [
+            'posicione', 'pieza',
+            'limpie', 'puntas', 'contacto',
+            'compruebe', 'calibración', 'cero',
+            'realice', 'medición'
+        ];
+        
+        let aciertos = 0;
+        debeIncluir.forEach(palabra => {
+            if (respuesta.includes(palabra)) aciertos++;
+        });
+
+        fb.style.display = 'block';
+        
+        // Si tiene al menos 6 palabras clave, lo da por bueno
+        if (aciertos >= 6) {
+            fb.className = 'feedback';
+            fb.innerHTML = '✅ ¡Correcto! Has mencionado los pasos esenciales.';
+        } else {
+            fb.className = 'feedback feedback-incorrect';
+            fb.innerHTML = '❌ Casi! Recordá los 4 pasos...';
         }
     }
 
