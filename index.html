@@ -493,32 +493,36 @@
             fb.innerHTML = `❌ Vimos sólo ${encontradas} partes. Recordá: arco, tornillo micrométrico, puntas de contacto, tornillo de fijación, cilindro exterior, tambor, tuerca, trinquete.`;
         }
     }
-    function validarP21() {
-        const respuesta = document.getElementById('r21').value.trim().toLowerCase();
-        const fb = document.getElementById('fb21');
+    // Validador específico para la pregunta 1
+    function validarP1() {
+        const respuesta = document.getElementById('r1').value.trim().toLowerCase();
+        const fb = document.getElementById('fb1');
         
-        // Palabras clave que busca
-        const debeIncluir = [
-            'posicione', 'pieza',
-            'limpie', 'puntas', 'contacto',
-            'compruebe', 'calibración', 'cero',
-            'realice', 'medición'
+        // Conceptos clave que debe incluir
+        const conceptos = [
+            'rama de la metrología',
+            'medición',
+            'propiedades',
+            'unidad de longitud',
+            'distancia',
+            'posición',
+            'redondez'
         ];
         
         let aciertos = 0;
-        debeIncluir.forEach(palabra => {
-            if (respuesta.includes(palabra)) aciertos++;
+        conceptos.forEach(concepto => {
+            if (respuesta.includes(concepto)) aciertos++;
         });
 
         fb.style.display = 'block';
         
-        // Si tiene al menos 6 palabras clave, lo da por bueno
-        if (aciertos >= 6) {
+        // Con tener al menos 4 conceptos clave, es suficiente
+        if (aciertos >= 4) {
             fb.className = 'feedback';
-            fb.innerHTML = '✅ ¡Correcto! Has mencionado los pasos esenciales.';
+            fb.innerHTML = `✅ ¡Correcto! Tu respuesta incluye los conceptos esenciales (${aciertos} de 7).`;
         } else {
             fb.className = 'feedback feedback-incorrect';
-            fb.innerHTML = '❌ Casi! Recordá los 4 pasos...';
+            fb.innerHTML = `❌ Detectamos solo ${aciertos} conceptos clave. Tu respuesta debe incluir: rama de la metrología, medición, propiedades, unidad de longitud, y ejemplos como distancia, posición, redondez.`;
         }
     }
     // Validador específico para la pregunta 20 - Versión justa
@@ -552,6 +556,34 @@
         } else {
             fb.className = 'feedback feedback-incorrect';
             fb.innerHTML = `❌ Detectamos solo ${encontradas} tipos. Asegurate de incluir al menos 4 de estas variantes:\n\n• medición externa\n• medición de espesor de tubos\n• con discos\n• medición de profundidades\n• externo con barras intercambiables\n• con reloj\n• interno`;
+        }
+    }
+    function validarP21() {
+        const respuesta = document.getElementById('r21').value.trim().toLowerCase();
+        const fb = document.getElementById('fb21');
+        
+        // Palabras clave que busca
+        const debeIncluir = [
+            'posicione', 'pieza',
+            'limpie', 'puntas', 'contacto',
+            'compruebe', 'calibración', 'cero',
+            'realice', 'medición'
+        ];
+        
+        let aciertos = 0;
+        debeIncluir.forEach(palabra => {
+            if (respuesta.includes(palabra)) aciertos++;
+        });
+
+        fb.style.display = 'block';
+        
+        // Si tiene al menos 6 palabras clave, lo da por bueno
+        if (aciertos >= 6) {
+            fb.className = 'feedback';
+            fb.innerHTML = '✅ ¡Correcto! Has mencionado los pasos esenciales.';
+        } else {
+            fb.className = 'feedback feedback-incorrect';
+            fb.innerHTML = '❌ Casi! Recordá los 4 pasos...';
         }
     }
 
