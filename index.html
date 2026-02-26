@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📐</text></svg>">
+    <title>Metrología Dimensional - Autoevaluación</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+        }
+        body {
+            background: #f0f2f5;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container {
+            max-width: 1000px;
+            width: 100%;
+            background: white;
+            border-radius: 32px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            padding: 30px;
+        }
+        h1 {
+            font-size: 2.2rem;
+            color: #0b2b4f;
+            margin-top: 0;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 4px solid #0a66c2;
+            padding-bottom: 16px;
+        }
+        .sub {
+            color: #2c3e50;
+            font-size: 1rem;
+            margin-bottom: 30px;
+            background: #e7f0ff;
+            padding: 12px 20px;
+            border-radius: 50px;
+        }
+        .pregunta {
+            background: #f9fafc;
+            border-left: 6px solid #2b6c9e;
+            border-radius: 20px;
+            padding: 18px 22px;
+            margin-bottom: 22px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.02);
+            transition: 0.2s;
+        }
+        .pregunta:hover {
+            background: #ffffff;
+            box-shadow: 0 8px 16px rgba(0,40,80,0.08);
+        }
+        .num {
+            font-weight: 700;
+            font-size: 1.2rem;
+            background: #0a66c2;
+            color: white;
+            display: inline-block;
+            padding: 4px 14px;
+            border-radius: 40px;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+        }
+        .enunciado {
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin: 8px 0 18px 0;
+            color: #102a41;
+        }
+        textarea {
+            width: 100%;
+            padding: 16px 18px;
+            font-size: 1rem;
+            border: 2px solid #ccdbe9;
+            border-radius: 24px;
+            resize: vertical;
+            background: white;
+            transition: 0.15s;
+            line-height: 1.5;
+        }
+        textarea:focus {
+            border-color: #0a66c2;
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(10,102,194,0.15);
+        }
+        .button-row {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin: 15px 0 10px 0;
+        }
+        .btn {
+            background: white;
+            border: 2px solid #0a66c2;
+            color: #0a66c2;
+            font-weight: 600;
+            padding: 10px 22px;
+            border-radius: 40px;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: 0.1s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+        }
+        .btn:hover {
+            background: #e0edff;
+        }
+        .btn-validate {
+            background: #0a66c2;
+            border: 2px solid #0a66c2;
+            color: white;
+            box-shadow: 0 4px 8px rgba(10,102,194,0.3);
+        }
+        .btn-validate:hover {
+            background: #084a8f;
+        }
+        .feedback {
+            background: #f1f9f0;
+            padding: 16px 20px;
+            border-radius: 24px;
+            margin-top: 18px;
+            border-left: 6px solid #2e7d32;
+            font-size: 1rem;
+            line-height: 1.5;
+            white-space: pre-wrap;
+        }
+        .feedback-incorrect {
+            background: #fff2f0;
+            border-left-color: #c63626;
+        }
+        .badge {
+            background: #1e4a76;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            margin-left: 12px;
+        }
+        hr {
+            border: none;
+            border-top: 3px dashed #bdd3e8;
+            margin: 30px 0;
+        }
+        .footer-note {
+            text-align: center;
+            color: #2c5779;
+            font-style: italic;
+            background: #e4f0fa;
+            padding: 18px;
+            border-radius: 60px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>🔬 Metrología Dimensional <span style="font-size:1.2rem; margin-left:auto;">✍️ completá y validá</span></h1>
+    <div class="sub">📌 21 preguntas. Escribí tu respuesta y toca "Validar".</div>
+
+    <!-- PREGUNTA 1 -->
+    <div class="pregunta" id="p1">
+        <div class="num">1</div>
+        <div class="enunciado">Define Metrología Dimensional y mencione al menos 3 propiedades que mide.</div>
+        <textarea id="r1" placeholder="Escribí tu respuesta..." rows="3"></textarea>
+        <div class="button-row">
+            <button class="btn btn-validate" onclick="validar(1, 'metrología dimensional es la rama de la metrología que se encarga de la medición de todas aquellas propiedades que se determinan mediante la unidad de longitud, como por ejemplo distancia, posición, redondez')">✅ Validar</button>
+            <button class="btn" onclick="mostrarAyuda(1)">🔍 Ver modelo</button>
+        </div>
+        <div id="fb1" class="feedback" style="display: none;"></div>
+    </div>
+
+    <!-- PREGUNTA 2 -->
+    <div class="pregunta" id="p2">
+        <div class="num">2</div>
+        <div class="enunciado">Explique porque la Metrología Dimensional es clave para la intercambiabilidad Industrial.</div>
+        <textarea id="r2" placeholder="..." rows="3"></textarea>
+        <div class="button-row">
+            <button class="btn btn-validate" onclick="validar(2, 'clave para la intercambiabilidad industrial porque garantiza que las piezas fabricadas cumplan con las dimensiones y tolerancias especificadas, permitiendo que los componentes puedan ensamblarse correctamente sin ajustes adicionales, incluso si fueron producidos en distintas máquinas o plantas')">✅ Validar</button>
+            <button class="btn" onclick="mostrarAyuda(2)">🔍 Ver modelo</button>
+        </div>
+        <div id="fb2" class="feedback" style="display: none;"></div>
+    </div>
+
+    <!-- PREGUNTA 3 -->
+    <div class="pregunta" id="p3">
+        <div class="num">3</div>
+        <div class="enunciado">Enumere las áreas de aplicación de la Metrología Dimensional según el criterio Funcional.</div>
+        <textarea id="r3" placeholder="Ej: longitudes, ángulos, etc..." rows="2"></textarea>
+        <div class="button-row">
+            <button class="btn btn-validate" onclick="validar(3, 'longitudes, ángulos, acabado superficial, formas')">✅ Validar</button>
+            <button class="btn" onclick="mostrarAyuda(3)">🔍 Ver modelo</button>
+        </div>
+        <div id="fb3" class="feedback" style="display: none;"></div>
+    </div>
+
+    <!-- PREGUNTA 4 -->
+    <div class="pregunta" id="p4">
+        <div class="num">4</div>
+        <div class="enunciado">Diferencie Medición Directa e Indirecta indicando ejemplos de instrumentos para cada una.</div>
+        <textarea id="r4" placeholder="..." rows="3"></textarea>
+        <div class="button-row">
+            <button class="btn btn-validate" onclick="validar(4, 'medición directa: aquella en la que el valor se obtiene directamente del instrumento mediante escalas o divisiones. ej: calibradores y micrómetros. en cambio, la indirecta es aquella en la que el valor se obtiene por comparación o cálculo, utilizando instrumentos auxiliares. ej: comparadores electromecánicos, comparador óptico, máquina de medición de redondez')">✅ Validar</button>
+            <button class="btn" onclick="mostrarAyuda(4)">🔍 Ver modelo</button>
+        </div>
+        <div id="fb4" class="feedback" style="display: none;"></div>
+    </div>
+
+    <!-- PREGUNTA 5 -->
+    <div class="pregunta" id="p5">
+        <div class="num">5</div>
+        <div class="enunciado">Defina Magnitud, medición, mensurado.</div>
+        <textarea id="r5" placeholder="..." rows="3"></textarea>
+        <div class="button-row">
+            <button class="btn btn-validate" onclick="validar(5, 'magnitud: propiedad de un fenómeno, cuerpo o sustancia, que puede expresarse cuantitativamente mediante un número y una referencia. medición: proceso que consiste en obtener experimentalmente uno o varios valores que pueden atribuirse razonablemente a una magnitud. mensurado: magnitud que se desea medir')">✅ Validar</button>
+            <button class="btn" onclick="mostrarAyuda(5)">🔍 Ver modelo</button>
+        </div>
+        <div id="fb5" class="feedback" style="display: none;"></div>
+    </div>
+
+    <!-- PREGUNTA 6 -->
+    <div class="pregunta" id="p6">
+        <div class="num">6</div>
+        <div class="enunciado">Explique la diferencia entre exactitud y precisión desde el punto de uso metrológico.</div>
+        <textarea id="r6" placeholder="..." rows="3"></textarea>
+        <div class="button-row">
+            <button class="btn btn-validate" onclick="validar(6, 'exactitud: indica qué tan cercano está el valor medido al valor verdadero del mensurando. precisión: indica qué tan cercanos están entre sí los resultados obtenidos en mediciones repetidas bajo las mismas condiciones. una medición puede ser precisa sin ser exacta, y exacta solo cuando se acerca al valor verdadero')">✅ Validar</button>
+            <button class="btn" onclick="mostrarAyuda(6)">🔍 Ver modelo</button>
+        </div>
+        <div id="fb6" class="feedback" style="display: none;"></div>
+    </div>
+
+    <!-- PREGUNTA 7 -->
+    <div class="pregunta" id="p7">
+        <div class="num">7</div>
+        <div class="enunciado">¿Qué es la calibración y cuál es su finalidad principal?</div>
+        <textarea id="r7" placeholder="..." rows="3"></textarea>
+        <div class="button-row">
+            <button class="btn btn-validate" onclick="validar(7, 'calibración es la operación que establece la relación entre los valores indicados por un instrumento de medición y los valores conocidos de un patrón de referencia, considerando sus incertidumbres. su finalidad principal es garantizar resultados de medición confiables, trazables y comparables, asegurando la exactitud del instrumento')">✅ Validar</button>
+            <button class="btn" onclick="mostrarAyuda(7)">🔍 Ver modelo</button>
+        </div>
+        <div id="fb7" class="feedback" style="display: none;"></div>
+    </div>
+
+    <!-- PREGUNTA 8 -->
+    <div class="pregunta" id="p8">
+        <div class="num">8</div>
+        <div class="enunciado">Describa el error de paralaje y cómo puede evitarse.</div>
+        <textarea id="r8" placeholder="..." rows="3"></textarea>
+        <div class="button-row">
+            <button class="btn btn-validate" onclick="validar(8, 'error de paralaje ocurre cuando la escala y la línea índice no se encuentran en el mismo plano, provocando una lectura incorrecta debido a la posición del observador. este error puede evitarse observando la escala perpendicularmente, alineando correctamente el ojo con la marca de lectura')">✅ Validar</button>
+            <button class="btn" onclick="mostrarAyuda(8)">🔍 Ver modelo</button>
+        </div>
+        <div id="fb8" class="feedback" style="display: none;"></div>
+    </div>
+
+    <!-- PREGUNTA 9 -->
+    <div class="pregunta" id="p9">
+        <div class="num">9</div>
+        <div class="enunciado">Explique el principio de Abbe y el error asociado.</div>
+        <textarea id="r9" placeholder="..." rows="3"></textarea>
+        <div class="button-row">
+            <button class="btn btn-validate" onclick="validar(9, 'principio de abbe establece que la máxima exactitud se obtiene cuando el eje de medición coincide con el eje de la escala del instrumento. el error de abbe ocurre cuando existe una separación entre ambos ejes, provocando errores de medición debido a pequeñas variaciones angulares durante la medición')">✅ Validar</button>
+            <button class="btn" onclick="mostrarAyuda(9)">🔍 Ver modelo</button>
+        </div>
+        <div id="fb9" class="feedback" style="display: none;"></div>
+    </div>
+
+    <!-- PREGUNTA 10 -->
+    <div class="pregunta" id="p10">
+        <div class="num">10</div>
+        <div class="enunciado">Defina repetibilidad y reproducibilidad en un estudio R&R.</div>
+        <textarea id="r10" placeholder="..." rows="3"></textarea>
+        <div class="button-row">
+            <button class="btn btn-validate" onclick="validar(10, 'repetibilidad: es la variación de los resultados obtenidos cuando un mismo operador mide el mismo objeto con el mismo instrumento bajo las mismas condiciones. reproducibilidad: es la variación de los resultados obtenidos cuando diferentes operadores, instrumentos o condiciones miden el mismo objeto')">✅ Validar</button>
+            <button class="btn" onclick="mostrarAyuda(10)">🔍 Ver modelo</button>
+        </div>
+        <div id="fb10" class="feedback" style="display: none;"></div>
+    </div>
+
+    <!-- PREGUNTA 11 -->
+    <div class="pregunta" id="p11">
+        <div class="num">11</div>
+        <div class="enunciado">¿Qué es la trazabilidad metrológica y cómo se demuestra?</div>
+        <textarea id="r11" placeholder="..." rows="3"></textarea>
+        <div class="button-row">
+            <button class="btn btn-validate" onclick="validar(11, 'trazabilidad metrológica es la propiedad que permite relacionar un resultado de medición con un patrón de referencia mediante una cadena ininterrumpida de calibraciones documentadas. se demuestra a través de certificados de calibración emitidos por laboratorios acreditados')">✅ Validar</button>
+            <button class="btn" onclick="mostrarAyuda(11)">🔍 Ver modelo</button>
+        </div>
+        <div id="fb11" class="feedback" style="display: none;"></div>
+    </div>
+
+    <!-- PREGUNTA 12 -->
+    <div class="pregunta" id="p12">
+        <div class="num">12</div>
+        <div class="enunciado">¿Qué es el calibrador o vernier y cuáles son las mediciones que permite realizar?</div>
+        <textarea id="r12" placeholder="..." rows="3"></textarea>
+        <div class="button-row">
+            <button class="btn btn-validate" onclick="validar(12, 'calibrador o vernier es un instrumento de medición de precisión que permite lecturas en milímetros y pulgadas mediante una escala fija y una escala móvil (nonio). permite realizar mediciones de dimensiones exteriores, interiores, profundidades y escalones')">✅ Validar</button>
+            <button class="btn" onclick="mostrarAyuda(12)">🔍 Ver modelo</button>
+        </div>
+        <div id="fb12" class="feedback" style="display: none;"></div>
+    </div>
+
+    <!-- PREGUNTA 13 -->
+    <div class="pregunta" id="p13">
+        <div class="num">13</div>
+        <div class="enunciado">Explique el principio de funcionamiento del micrómetro.</div>
+        <textarea id="r13" placeholder="..." rows="3"></textarea>
+        <div class="button-row">
+            <button class="btn btn-validate" onclick="validar(13, 'micrómetro funciona mediante un tornillo micrométrico, que al girar avanza o retrocede una distancia precisa. cada vuelta completa del tornillo produce un desplazamiento conocido, lo que permite realizar mediciones muy precisas de pequeñas dimensiones')">✅ Validar</button>
+            <button class="btn" onclick="mostrarAyuda(13)">🔍 Ver modelo</button>
+        </div>
+        <div id="fb13" class="feedback" style="display: none;"></div>
+    </div>
+
+    <!-- PREGUNTA 14 -->
+    <div class="pregunta" id="p14">
+        <div class="num">14</div>
+        <div class="enunciado">¿Qué tipos de ajustes existen según las tolerancias ISO?</div>
+        <textarea id="r14" placeholder="..." rows="2"></textarea>
+        <div class="button-row">
+            <button class="btn btn-validate" onclick="validar(14, 'ajuste con juego, ajuste de transición, ajuste con interferencia o forzado')">✅ Validar</button>
+            <button class="btn" onclick="mostrarAyuda(14)">🔍 Ver modelo</button>
+        </div>
+        <div id="fb14" class="feedback" style="display: none;"></div>
+    </div>
+
+    <!-- PREGUNTA 15 -->
+    <div class="pregunta" id="p15">
+        <div class="num">15</div>
+        <div class="enunciado">¿Qué significa ISO?</div>
+        <textarea id="r15" placeholder="..." rows="2"></textarea>
+        <div class="button-row">
+            <button class="btn btn-validate" onclick="validar(15, 'iso significa organización internacional de normalización (international organization for standardization)')">✅ Validar</button>
+            <button class="btn" onclick="mostrarAyuda(15)">🔍 Ver modelo</button>
+        </div>
+        <div id="fb15" class="feedback" style="display: none;"></div>
+    </div>
+
+    <!-- PREGUNTA 16 -->
+    <div class="pregunta" id="p16">
+        <div class="num">16</div>
+        <div class="enunciado">¿Qué significa SI?</div>
+        <textarea id="r16" placeholder="..." rows="2"></textarea>
+        <div class="button-row">
+            <button class="btn btn-validate" onclick="validar(16, 'si significa sistema internacional de unidades, el sistema de unidades de medida adoptado internacionalmente')">✅ Validar</button>
+            <button class="btn" onclick="mostrarAyuda(16)">🔍 Ver modelo</button>
+        </div>
+        <div id="fb16" class="feedback" style="display: none;"></div>
+    </div>
+
+    <!-- PREGUNTA 17 (partes de un vernier) -->
+    <div class="pregunta" id="p17">
+        <div class="num">17</div>
+        <div class="enunciado">Enumere las partes de un Vernier (al menos 8).</div>
+        <textarea id="r17" placeholder="ej: oreja fija, oreja móvil, nonio, etc..." rows="3"></textarea>
+        <div class="button-row">
+            <button class="btn btn-validate" onclick="validarPartesVernier(17)">✅ Validar</button>
+            <button class="btn" onclick="mostrarAyuda(17)">🔍 Ver modelo</button>
+        </div>
+        <div id="fb17" class="feedback" style="display: none;"></div>
+    </div>
+
+    <!-- PREGUNTA 18 -->
+    <div class="pregunta" id="p18">
+        <div class="num">18</div>
+        <div class="enunciado">¿Qué es el micrómetro?</div>
+        <textarea id="r18" placeholder="..." rows="2"></textarea>
+        <div class="button-row">
+            <button class="btn btn-validate" onclick="validar(18, 'micrómetro es un instrumento de dimensión variable que permite medir, a través de lectura directa, las dimensiones reales con una aproximación de hasta 0,001mm')">✅ Validar</button>
+            <button class="btn" onclick="mostrarAyuda(18)">🔍 Ver modelo</button>
+        </div>
+        <div id="fb18" class="feedback" style="display: none;"></div>
+    </div>
+
+    <!-- PREGUNTA 19 partes micrómetro -->
+    <div class="pregunta" id="p19">
+        <div class="num">19</div>
+        <div class="enunciado">Mencione al menos 5 partes del micrómetro.</div>
+        <textarea id="r19" placeholder="ej: arco, tornillo micrométrico, puntas de contacto, etc..." rows="3"></textarea>
+        <div class="button-row">
+            <button class="btn btn-validate" onclick="validarPartesMicro(19)">✅ Validar</button>
+            <button class="btn" onclick="mostrarAyuda(19)">🔍 Ver modelo</button>
+        </div>
+        <div id="fb19" class="feedback" style="display: none;"></div>
+    </div>
+
+    <!-- PREGUNTA 20 tipos y uso -->
+    <div class="pregunta" id="p20">
+        <div class="num">20</div>
+        <div class="enunciado">Cite al menos 4 tipos de micrómetro y su uso.</div>
+        <textarea id="r20" placeholder="..." rows="3"></textarea>
+        <div class="button-row">
+            <button class="btn btn-validate" onclick="validar(20, 'micrómetro para medición externa, micrómetro para medición de espesor de tubos, micrómetro con discos, micrómetro para medición de profundidades, micrómetro con reloj, micrómetro externo con barras intercambiables, micrómetro interno')">✅ Validar</button>
+            <button class="btn" onclick="mostrarAyuda(20)">🔍 Ver modelo</button>
+        </div>
+        <div id="fb20" class="feedback" style="display: none;"></div>
+    </div>
+
+    <!-- PREGUNTA 21 pasos medición -->
+    <div class="pregunta" id="p21">
+        <div class="num">21</div>
+        <div class="enunciado">Pasos para hacer la medición con micrómetro (resumen).</div>
+        <textarea id="r21" placeholder="..." rows="3"></textarea>
+        <div class="button-row">
+            <button class="btn btn-validate" onclick="validar(21, '1) posicione la pieza, 2) limpie las puntas de contacto, 3) compruebe la calibración del micrómetro, 4) realice la primera medición')">✅ Validar</button>
+            <button class="btn" onclick="mostrarAyuda(21)">🔍 Ver modelo</button>
+        </div>
+        <div id="fb21" class="feedback" style="display: none;"></div>
+    </div>
+
+    <hr>
+    <div class="footer-note">⚡ Completá con tus palabras y validá. No importa si no es exacto, lo importante es que domines los conceptos.</div>
+</div>
+
+<script>
+    // función genérica de validación por palabra clave (insensible a mayúsculas/minúsculas, tildes simplificadas)
+    function validar(num, claveEsperada) {
+        const respuesta = document.getElementById('r'+num).value.trim().toLowerCase().replace(/[áéíóúü]/g, function(c) { // normalizar tildes
+            const tildes = {'á':'a','é':'e','í':'i','ó':'o','ú':'u','ü':'u'};
+            return tildes[c] || c;
+        });
+        const esperada = claveEsperada.toLowerCase().replace(/[áéíóúü]/g, c => {
+            const tildes = {'á':'a','é':'e','í':'i','ó':'o','ú':'u','ü':'u'};
+            return tildes[c] || c;
+        });
+
+        const fb = document.getElementById('fb'+num);
+        let esCorrecto = false;
+
+        // Si el texto es muy corto, probablemente no
+        if (respuesta.length < 15) {
+            esCorrecto = false;
+        } else {
+            // Dividimos la esperada en frases clave y comprobamos que aparezcan al menos 2 o 3 piezas principales
+            const frasesClave = esperada.split(/. |, |\. /).filter(p => p.length > 10);
+            let aciertos = 0;
+            frasesClave.forEach(frase => {
+                if (frase.length > 8 && respuesta.includes(frase)) aciertos++;
+            });
+            // si al menos 2 frases clave (o 60% del texto) están presentes
+            if (frasesClave.length > 0 && aciertos >= Math.min(2, frasesClave.length)) esCorrecto = true;
+            else if (respuesta.includes('longitud') && respuesta.includes('medición')) esCorrecto = true; // para la 1
+        }
+
+        fb.style.display = 'block';
+        if (esCorrecto) {
+            fb.className = 'feedback';
+            fb.innerHTML = '✅ ¡Bien! Tu respuesta refleja los conceptos clave. Podés comparar con el modelo si querés afinar detalles.';
+        } else {
+            fb.className = 'feedback feedback-incorrect';
+            fb.innerHTML = '❌ Todavía no. Hacé click en "Ver modelo" para leer la respuesta de referencia, y volvé a intentar con tus palabras.';
+        }
+    }
+
+    // Validador especial para partes de vernier (pregunta 17)
+    function validarPartesVernier(num) {
+        const resp = document.getElementById('r'+num).value.trim().toLowerCase();
+        const partesEsperadas = ['oreja fija', 'oreja móvil', 'nonio', 'tornillo de fijación', 'cursor', 'escala fija', 'pico fijo', 'brazo fijo', 'brazo móvil', 'pico móvil', 'botón para el pulgar', 'barra de profundidad'];
+        let encontradas = 0;
+        partesEsperadas.forEach(parte => {
+            if (resp.includes(parte)) encontradas++;
+        });
+        const fb = document.getElementById('fb'+num);
+        fb.style.display = 'block';
+        if (encontradas >= 6) {
+            fb.className = 'feedback';
+            fb.innerHTML = `✅ Bien! Mencionaste al menos 6 partes (encontramos ${encontradas} de la lista).`;
+        } else {
+            fb.className = 'feedback feedback-incorrect';
+            fb.innerHTML = `❌ Sólo detectamos ${encontradas} partes correctas. Intentá con más elementos (ej: oreja fija, móvil, nonio, tornillo, cursor, pico fijo, barra profundidad...)`;
+        }
+    }
+
+    function validarPartesMicro(num) {
+        const resp = document.getElementById('r'+num).value.trim().toLowerCase();
+        const partes = ['arco', 'tornillo micrométrico', 'puntas de contacto', 'tornillo de fijación', 'cilindro exterior', 'tambor', 'tuerca ajustable', 'trinquete'];
+        let encontradas = 0;
+        partes.forEach(p => { if (resp.includes(p)) encontradas++; });
+        const fb = document.getElementById('fb'+num);
+        fb.style.display = 'block';
+        if (encontradas >= 4) {
+            fb.className = 'feedback';
+            fb.innerHTML = `✅ Correcto! Reconocimos ${encontradas} partes.`;
+        } else {
+            fb.className = 'feedback feedback-incorrect';
+            fb.innerHTML = `❌ Vimos sólo ${encontradas} partes. Recordá: arco, tornillo micrométrico, puntas de contacto, tornillo de fijación, cilindro exterior, tambor, tuerca, trinquete.`;
+        }
+    }
+
+    function mostrarAyuda(num) {
+        const fb = document.getElementById('fb'+num);
+        const respuestasModelo = {
+            1: "📌 Modelo: La metrología dimensional es la rama de la metrología que se encarga de la medición de todas aquellas propiedades que se determinan mediante la unidad de longitud, como por ejemplo distancia, posición, redondez.",
+            2: "📌 Modelo: Es clave para la intercambiabilidad industrial porque garantiza que las piezas fabricadas cumplan con las dimensiones y tolerancias especificadas, permitiendo que los componentes puedan ensamblarse correctamente sin ajustes adicionales, incluso si fueron producidos en distintas máquinas o plantas.",
+            3: "📌 Áreas: Longitudes, Ángulos, Acabado superficial, Formas.",
+            4: "📌 Medición directa: valor directo del instrumento (calibradores, micrómetros). Indirecta: por comparación o cálculo (comparadores, máquina de redondez).",
+            5: "📌 Magnitud: propiedad expresable numéricamente. Medición: proceso experimental para obtener valores. Mensurado: magnitud a medir.",
+            6: "📌 Exactitud: cercanía al valor verdadero. Precisión: cercanía entre mediciones repetidas. Puede ser preciso pero no exacto.",
+            7: "📌 Calibración: relación entre indicación y patrón. Finalidad: resultados confiables, trazables y exactos.",
+            8: "📌 Error de paralaje: escala e índice en diferente plano → lectura errónea. Se evita observando perpendicularmente.",
+            9: "📌 Principio de Abbe: eje de medición debe coincidir con eje de escala. Error de Abbe: separación entre ejes genera error angular.",
+            10: "📌 Repetibilidad: mismas condiciones, mismo operador. Reproducibilidad: diferentes operadores/condiciones.",
+            11: "📌 Trazabilidad: cadena ininterrumpida a un patrón. Se demuestra con certificados de calibración.",
+            12: "📌 Vernier: medición de precisión con nonio. Mide exteriores, interiores, profundidades y escalones.",
+            13: "📌 Micrómetro: tornillo micrométrico que avanza una distancia precisa por vuelta → alta precisión.",
+            14: "📌 Ajustes ISO: con juego, transición, interferencia (forzado).",
+            15: "📌 ISO: International Organization for Standardization.",
+            16: "📌 SI: Sistema Internacional de Unidades.",
+            17: "📌 Partes vernier: oreja fija, oreja móvil, nonio (pulgadas), tornillo de fijación, cursor, escala fija (pulgadas), pico fijo, brazo fijo, brazo móvil, pico móvil, nonio, botón pulsador, escala fija (mm), barra de profundidad.",
+            18: "📌 Micrómetro: instrumento de dimensión variable que mide con aproximación hasta 0,001 mm.",
+            19: "📌 Partes micrómetro: arco, tornillo micrométrico, puntas de contacto, tornillo de fijación, cilindro exterior, tambor, tuerca ajustable, trinquete.",
+            20: "📌 Tipos: externo, espesor de tubos, con discos, profundidades, con reloj, externo con barras, interno.",
+            21: "📌 Pasos: 1) Posicione pieza, 2) Limpie puntas, 3) Compruebe calibración (cero), 4) Realice medición."
+        };
+        fb.style.display = 'block';
+        fb.className = 'feedback'; // neutral
+        fb.innerHTML = respuestasModelo[num] || "🔍 Revisá el material original.";
+    }
+</script>
+</body>
+</html>
